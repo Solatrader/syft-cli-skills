@@ -16,9 +16,25 @@ It packages one orchestration skill plus five atomic skills for Codex and GitHub
 
 ## Who This Is For
 
-- Codex users who want installable personal skills
-- GitHub Copilot users who want repository-local or personal agent skills
-- maintainers who want a reproducible skill bundle with examples and release assets
+Syft here refers to a CLI-driven personalized news workflow where the core available inputs are:
+
+- `syft following` for the user's declared topic graph
+- `syft top` for high-signal news pools
+- `syft search` for targeted backfill and gap repair
+
+This skill pack turns those raw Syft CLI surfaces into reusable editorial workflows with clear user value:
+
+- build a reusable interest profile instead of re-explaining taste every session
+- generate a personalized daily briefing instead of reading a flat article dump
+- convert scattered news into trunk-branch storyline trees that are easier to browse and reason about
+- backfill thin branches without rebuilding the whole structure
+- store long-lived editorial preferences so the workflow becomes more consistent over time
+
+This repository is for:
+
+- Codex users who want installable skills for Syft-based profile building, daily briefings, storyline trees, and backfill workflows
+- GitHub Copilot users who want repository-local or personal agent skills for the same Syft-only news workflow
+- maintainers who want a reproducible skill bundle with examples, mirrored install layouts, and release assets
 
 ## Repository Layout
 
@@ -43,7 +59,17 @@ Do not hand-edit `.github/skills/` or `codex-skills/` unless you are fixing the 
 
 Two supported paths:
 
-1. Install from this GitHub repository by pointing your Codex skill installer at one or more directories under `codex-skills/`.
+1. Install from this GitHub repository with `$skill-installer`.
+
+   Copyable examples:
+
+   - install the orchestration entry point only:
+     `Use $skill-installer to install https://github.com/Solatrader/syft-cli-skills/tree/main/codex-skills/syft-news-pipeline`
+   - install one atomic skill directly:
+     `Use $skill-installer to install https://github.com/Solatrader/syft-cli-skills/tree/main/codex-skills/syft-daily-briefing`
+   - install the full pack:
+     `Use $skill-installer to install these skills from Solatrader/syft-cli-skills: codex-skills/syft-news-pipeline, codex-skills/syft-profile-summary, codex-skills/syft-daily-briefing, codex-skills/syft-storyline-tree, codex-skills/syft-storyline-backfill, codex-skills/syft-guidance-rulebook`
+
 2. Download a release zip, then copy the desired skill directories into your Codex skills home such as `~/.codex/skills` or the directory backed by `CODEX_HOME/skills`.
 
 See [docs/install-codex.md](docs/install-codex.md).

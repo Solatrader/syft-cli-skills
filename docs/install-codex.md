@@ -4,7 +4,29 @@ This repository provides a Codex-oriented mirror under `codex-skills/`.
 
 ## Option 1: Install From GitHub
 
-If your Codex environment supports GitHub-path skill installation, install one or more directories under:
+If your Codex environment has the built-in `$skill-installer`, the simplest path is to ask Codex to install directly from GitHub.
+
+Copyable prompts:
+
+- install the orchestration entry point only:
+
+```text
+Use $skill-installer to install https://github.com/Solatrader/syft-cli-skills/tree/main/codex-skills/syft-news-pipeline
+```
+
+- install one atomic skill directly:
+
+```text
+Use $skill-installer to install https://github.com/Solatrader/syft-cli-skills/tree/main/codex-skills/syft-daily-briefing
+```
+
+- install the full pack:
+
+```text
+Use $skill-installer to install these skills from Solatrader/syft-cli-skills: codex-skills/syft-news-pipeline, codex-skills/syft-profile-summary, codex-skills/syft-daily-briefing, codex-skills/syft-storyline-tree, codex-skills/syft-storyline-backfill, codex-skills/syft-guidance-rulebook
+```
+
+If you prefer to reason about the raw paths yourself, the Codex-oriented mirror lives under:
 
 - `codex-skills/syft-news-pipeline`
 - `codex-skills/syft-profile-summary`
@@ -17,6 +39,7 @@ Recommended approach:
 
 1. install the pipeline skill if you want one entry point
 2. install the atomic skills if you want direct invocation by skill name
+3. restart Codex to pick up newly installed skills if your client does not reload them automatically
 
 ## Option 2: Install From A Release Zip
 
