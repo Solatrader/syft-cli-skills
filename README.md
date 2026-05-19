@@ -68,7 +68,7 @@ Two supported paths:
    - install one atomic skill directly:
      `Use $skill-installer to install https://github.com/Solatrader/syft-cli-skills/tree/main/codex-skills/syft-daily-briefing`
    - install the full pack:
-     `Use $skill-installer to install these skills from Solatrader/syft-cli-skills: codex-skills/syft-news-pipeline, codex-skills/syft-profile-summary, codex-skills/syft-daily-briefing, codex-skills/syft-storyline-tree, codex-skills/syft-storyline-backfill, codex-skills/syft-guidance-rulebook`
+     `Use $skill-installer to install these skill paths from the GitHub repo Solatrader/syft-cli-skills: codex-skills/syft-news-pipeline, codex-skills/syft-profile-summary, codex-skills/syft-daily-briefing, codex-skills/syft-storyline-tree, codex-skills/syft-storyline-backfill, codex-skills/syft-guidance-rulebook`
 
 2. Download a release zip, then copy the desired skill directories into your Codex skills home such as `~/.codex/skills` or the directory backed by `CODEX_HOME/skills`.
 
