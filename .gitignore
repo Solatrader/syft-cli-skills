@@ -1,5 +1,6 @@
 release/
 __pycache__/
+.npm-cache/
 *.pyc
 *.pyo
 *.tmp

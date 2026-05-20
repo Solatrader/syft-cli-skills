@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Storyline Tree - 2026-05-20 Pipeline English Round2</title>
+  <style>
+    :root {
+      --bg: #f3f5f7;
+      --paper: #ffffff;
+      --card: #ffffff;
+      --line: #d8dde3;
+      --line-strong: #bfc7d1;
+      --ink: #12161c;
+      --muted: #64707d;
+      --known: #198754;
+      --topic: #b26a00;
+      --search-primary: #2563eb;
+      --search-secondary: #7c3aed;
+      --accent: #0f172a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.62;
+    }
+    .wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 28px 24px 64px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 980px;
+      font-size: 15px;
+    }
+    .legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .legend-chip, .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .trunk, .appendix {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 20px 18px;
+      margin-bottom: 18px;
+    }
+    .trunk h2, .appendix h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+    .matters {
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+    .summary {
+      color: #2a313a;
+      margin: 0 0 16px;
+      max-width: 980px;
+    }
+    .branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 14px;
+    }
+    .branch {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 16px 10px;
+    }
+    .branch h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .rationale {
+      margin: 0 0 12px;
+      color: #2d3640;
+    }
+    .timeline {
+      margin-left: 4px;
+      padding-left: 16px;
+      border-left: 1px solid var(--line-strong);
+    }
+    .item {
+      position: relative;
+      margin-bottom: 12px;
+      padding-bottom: 2px;
+    }
+    .item::before {
+      content: "";
+      position: absolute;
+      left: -21px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--known);
+      box-shadow: 0 0 0 3px var(--paper);
+    }
+    .item.topic_top::before { background: var(--topic); }
+    .item.syft_search_primary::before { background: var(--search-primary); }
+    .item.syft_search_secondary::before { background: var(--search-secondary); }
+    .date {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .item-title {
+      font-weight: 700;
+      margin: 2px 0 4px;
+      font-size: 15px;
+    }
+    .item-body {
+      margin: 0 0 6px;
+      color: #303944;
+      font-size: 14px;
+    }
+    .appendix .watch {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .watch h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .wrap { padding: 20px 14px 44px; }
+      h1 { font-size: 30px; }
+      .trunk, .appendix { padding: 16px; }
+      .branches { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Storyline Tree</h1>
+    <p class="subtitle">
+      Pipeline rerun for <strong>2026-05-20</strong>. This English tree follows the current cross-language visual rulebook and keeps the retrieval ladder disciplined: broad pool first, topic-local reinforcement second, targeted search only where chronology still needs thickening.
+    </p>
+    <div class="legend">
+      <span class="legend-chip"><span class="dot" style="background: var(--known)"></span>known pool</span>
+      <span class="legend-chip"><span class="dot" style="background: var(--topic)"></span>topic top</span>
+      <span class="legend-chip"><span class="dot" style="background: var(--search-primary)"></span>syft search primary</span>
+      <span class="legend-chip"><span class="dot" style="background: var(--search-secondary)"></span>syft search secondary</span>
+    </div>
+
+    <section class="trunk">
+      <h2>T1. Iran Nuclear Brinkmanship and Macro Stress Transmission</h2>
+      <p class="matters">Why this matters: diplomacy, shipping risk, and market repricing are all sitting on the same structure.</p>
+      <p class="summary">The Iran line now reads as a full one-week stress corridor rather than a two-day flare-up. Early in the window, the dominant mood is still sanctions-and-standoff: a game-of-chicken frame, enforcement signals, and outside calls to avoid a wider armed confrontation. By the middle of the week, that hard edge mutates into negotiation mechanics: a 10-point red-line plan, counterproposal traffic, explicit sanctions-relief demands, and renewed arguments that maximalist nuclear conditions are unrealistic. Running beneath all of that is a second line that never really relaxes: Hormuz pressure, freight hedging, oil-driven rate stress, and bond-market repricing. Put together, T1 is best read as negotiation under structural macro pressure, not as a clean diplomatic thaw.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T1-B1. Negotiation Window and Red-Line Framing</h3>
+          <div class="meta">structural_driver</div>
+          <p class="rationale">This branch carries the political center of the Iran line before it spills outward into macro effects.</p>
+          <div class="timeline">
+            <div class="item syft_search_primary"><div class="date">2026-05-13</div><div class="item-title">America and Iran settle into a sanctions-era game of chicken</div><p class="item-body">The week opens with escalation logic still dominating the relationship even before the latest negotiation signals return.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_secondary"><div class="date">2026-05-14</div><div class="item-title">Outside security voices warn against letting the Iran line harden into broader armed confrontation</div><p class="item-body">The line is already being treated as a regional stability question, not just a bilateral dispute.</p><span class="chip">syft_search_secondary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-17</div><div class="item-title">Iran's 10-point proposal is treated as a boundary-setting red line</div><p class="item-body">The diplomatic offer is being framed less as concession and more as terms-setting.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-18</div><div class="item-title">Iran routes a counterproposal through Pakistan amid tense relations</div><p class="item-body">The line moves from abstract posture into actual channel management and proposal exchange.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-18</div><div class="item-title">Tehran keeps pressing for sanctions relief and asset release</div><p class="item-body">Negotiation language remains tied to material relief demands rather than symbolic de-escalation.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-18</div><div class="item-title">Critics argue the White House is using the wrong war-to-deal metrics</div><p class="item-body">The debate shifts from surface outrage to whether the current pressure logic can produce an actual deal.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Deadlock language returns as zero-enrichment demands are called unrealistic</div><p class="item-body">Negotiation space exists, but only under harsh and visibly unstable conditions.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-20</div><div class="item-title">Vance says Iran is willing to negotiate under a red-line warning</div><p class="item-body">Diplomacy stays open, but the coercive framing remains intact.</p><span class="chip">known_pool</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T1-B2. Hormuz Pressure and Treasury Spillover</h3>
+          <div class="meta">market_validation</div>
+          <p class="rationale">This branch shows how the Iran line travels into oil, transport, and debt-market language.</p>
+          <div class="timeline">
+            <div class="item syft_search_primary"><div class="date">2026-05-14</div><div class="item-title">Freight players move early to hedge shipping costs against Iran-war risk</div><p class="item-body">Even before a clean transport rupture, logistics behavior starts pricing the corridor as unstable.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-15</div><div class="item-title">Energy-price shock revives demand for inflation-linked bonds</div><p class="item-body">Oil stress begins translating into explicit inflation-protection behavior.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-18</div><div class="item-title">Iran war fears help push borrowing costs toward multi-decade highs</div><p class="item-body">Debt stress is being priced as a live geopolitical transmission channel.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-18</div><div class="item-title">German bonds come under pressure from oil prices and Middle East tension</div><p class="item-body">The transmission line broadens beyond US rates into other major bond markets.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Public pressure mounts to keep Hormuz open for oil and goods</div><p class="item-body">The strait returns as the corridor where diplomacy and logistics could suddenly collide.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Bond-selloff pressure from the Iran shock reaches weaker Asian economies</div><p class="item-body">The spillover becomes a broader central-bank and funding-stress story, not just a US market story.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-19</div><div class="item-title">Treasury-yield coverage folds Iran fear into broader macro repricing</div><p class="item-body">The market is not waiting for a single rupture headline before reacting.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Oil-inventory depletion warnings reinforce the supply-and-inflation channel</div><p class="item-body">The macro branch gains a clearer physical-supply underpinning instead of staying purely sentiment-driven.</p><span class="chip">syft_search_primary</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trunk">
+      <h2>T2. Google I/O and the New AI Platform Stack</h2>
+      <p class="matters">Why this matters: this is not one keynote recap; it is a platform move across models, tools, and domain surfaces.</p>
+      <p class="summary">Google's post-I/O story is widening quickly. Gemini Omni broadens the model and interface layer, Flow and Flow Music push the creation side, Antigravity 2.0 strengthens developer workflow presence, and Gemini for Science moves the line into more institutional terrain. Taken together, this looks like stack competition, not just feature competition.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T2-B1. Gemini Omni, Flow, and the Consumer Surface</h3>
+          <div class="meta">structural_driver</div>
+          <p class="rationale">This branch captures the most visible top layer of the I/O push.</p>
+          <div class="timeline">
+            <div class="item known_pool"><div class="date">2026-05-18</div><div class="item-title">Pre-keynote coverage already frames Gemini as the event's spine</div><p class="item-body">The expectation going in was ecosystem reset, not a narrow product launch.</p><span class="chip">known_pool</span></div>
+            <div class="item known_pool"><div class="date">2026-05-19</div><div class="item-title">Follow-up coverage treats I/O as a major AI acceleration moment</div><p class="item-body">The conversation shifts quickly from launch recap to competitive consequence.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Google launches Gemini Omni together with Flow and Flow Music</div><p class="item-body">Model capability and creative tools are being pushed as one coordinated surface.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-20</div><div class="item-title">Gemini Omni starts getting read as an all-modal repricing event</div><p class="item-body">The post-keynote narrative is already moving toward broader stack implications.</p><span class="chip">known_pool</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T2-B2. Developer and Science Surface Expansion</h3>
+          <div class="meta">product_line_evolution</div>
+          <p class="rationale">This branch tracks how the same platform move expands into tooling and research packaging.</p>
+          <div class="timeline">
+            <div class="item known_pool"><div class="date">2026-05-19</div><div class="item-title">Antigravity 2.0 expands into desktop, CLI, and SDK form</div><p class="item-body">The AI story stops being keynote theater and starts looking like workflow infrastructure.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">Gemini 3.5 Flash becomes generally available in GitHub Copilot</div><p class="item-body">Google broadens its practical developer footprint through an already-familiar channel.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-20</div><div class="item-title">Gemini for Science enters the public follow-up cycle</div><p class="item-body">The company is clearly trying to extend the story into domain utility, not only assistant UX.</p><span class="chip">syft_search_primary</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trunk">
+      <h2>T3. Europe's Security Burden Under America First Reprioritization</h2>
+      <p class="matters">Why this matters: the signal is quieter than a battlefield line, but the structural consequences are large.</p>
+      <p class="summary">The Europe line is increasingly about selective American thinning rather than loud alliance rupture. Fewer available forces, delayed movement toward Poland, and growing language around a larger European pillar all point in the same direction: the burden map is being redrawn through prioritization behavior.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T3-B1. US Force Availability in Europe</h3>
+          <div class="meta">policy_signal</div>
+          <p class="rationale">This is the clearest policy-facing allocation signal in the trunk.</p>
+          <div class="timeline">
+            <div class="item syft_search_primary"><div class="date">2026-05-17</div><div class="item-title">Polish messaging stresses that US rotations continue even if numbers fluctuate</div><p class="item-body">Warsaw is already managing the meaning of variation rather than denying it exists.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item known_pool"><div class="date">2026-05-20</div><div class="item-title">The Pentagon line points to fewer forces in Europe and delayed movement to Poland</div><p class="item-body">America First logic becomes visible as allocation behavior, not just campaign rhetoric.</p><span class="chip">known_pool</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-20</div><div class="item-title">Follow-up coverage frames the shift as part of a larger European pillar</div><p class="item-body">The region is being pushed to adapt structurally rather than wait for a clean reversal.</p><span class="chip">syft_search_primary</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T3-B2. Europe Starts Filling More of the Security Map</h3>
+          <div class="meta">structural_driver</div>
+          <p class="rationale">This branch captures Europe's response to the same realignment.</p>
+          <div class="timeline">
+            <div class="item syft_search_primary"><div class="date">2026-05-13</div><div class="item-title">Germany and Ukraine deepen their security partnership</div><p class="item-body">Europe is hardening more of its own links inside the continent.</p><span class="chip">syft_search_primary</span></div>
+            <div class="item syft_search_primary"><div class="date">2026-05-19</div><div class="item-title">NATO messaging keeps emphasizing that the Ukraine war remains brutal</div><p class="item-body">Even with burden-sharing drift, the readiness language does not soften.</p><span class="chip">syft_search_primary</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trunk">
+      <h2>T4. Khara's 20th Anniversary and the Next EVA Pulse</h2>
+      <p class="matters">Why this matters: inside EVA fandom, this week clearly reads like a living franchise pulse rather than random product debris.</p>
+      <p class="summary">Khara's 20th anniversary gave EVA a proper center of gravity. Anno's forward-looking message, the commemorative Rei illustration, the BitSummit XR reveal, and fresh hobby-show exposure all reinforce the same idea: this is a continuity week, not a nostalgia-only week.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T4-B1. Anniversary Center of Gravity</h3>
+          <div class="meta">creator_or_event_line</div>
+          <p class="rationale">This branch anchors the emotional and narrative center of the EVA line.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-17</div><div class="item-title">Khara turns 20 and Anno signals that new EVA work is still ahead</div><p class="item-body">The anniversary moment points forward instead of closing backward.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-19</div><div class="item-title">A commemorative long-haired Rei illustration keeps the celebration hot</div><p class="item-body">Fan response shows that the anniversary still has real emotional pull.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T4-B2. XR, Hobby Show, and Product-Side Continuation</h3>
+          <div class="meta">merch_collab_line</div>
+          <p class="rationale">This branch shows how anniversary heat turns into fresh public-facing movement.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-14</div><div class="item-title">Shizuoka Hobby Show puts new EVA-linked product exposure back into circulation</div><p class="item-body">The franchise is still moving through the model-and-merch layer, not just through remembrance.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-20</div><div class="item-title">EVANGELION: Δ CROSS REFLECTIONS arrives at BitSummit with a new PV</div><p class="item-body">The XR branch gives the week a future-facing beat rather than a commemorative plateau.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trunk">
+      <h2>T5. FGO New-Chapter Runway and Fate Side Heat</h2>
+      <p class="matters">Why this matters: for Fate followers, this is a proper cadence week, not a one-item salvage line.</p>
+      <p class="summary">The center is FGO. The pre-new-chapter campaign is active, the early-June launch window is explicit, and the seven-pillars teaser gives the player base a shared object of speculation. Around that, Prisma Illya and figure-side movement keep the wider Fate field warm enough to feel alive.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T5-B1. FGO New-Chapter Runway</h3>
+          <div class="meta">fandom_release_cadence</div>
+          <p class="rationale">This is the main engine of the whole Fate line this week.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-13</div><div class="item-title">FGO opens the first pre-new-chapter campaign and summon wave</div><p class="item-body">The game shifts players back into main-story preparation mode.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-14</div><div class="item-title">The early-June chapter window and seven-pillars teaser become the discussion core</div><p class="item-body">The community now has a concrete speculation object to orbit around.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-15</div><div class="item-title">Live-service cadence keeps the broader FGO rhythm visibly active</div><p class="item-body">The line stays warm instead of flattening after the initial teaser.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T5-B2. Prisma Illya and Figure-Side Warmth</h3>
+          <div class="meta">merch_collab_line</div>
+          <p class="rationale">This branch keeps the Fate line from collapsing into only the main game mattering.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-13</div><div class="item-title">Prisma Illya catalog and streaming availability resurface in the weekly flow</div><p class="item-body">The side branch remains easy to re-enter for fans who orbit Fate through spinoffs.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-19</div><div class="item-title">A new Miyu wedding-swimsuit figure gives the merch side fresh energy</div><p class="item-body">This is small in universal terms but fully real inside Fate collector culture.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trunk">
+      <h2>T6. Early-Summer Onsen Upgrade Window</h2>
+      <p class="matters">Why this matters: this is not generic travel filler; it is a taste-sorted planning line.</p>
+      <p class="summary">The onsen line is useful because it now reads like a curated planning board. Scenic all-inclusive stays, food-ranked ryokan, seasonal firefly/event windows, and premium resort framing are all visible at once. That turns the branch from generic tourism copy into actionable mood-and-experience curation.</p>
+      <div class="branches">
+        <article class="branch">
+          <h3>T6-B1. Scenic and Premium Stay Pipeline</h3>
+          <div class="meta">destination_experience_line</div>
+          <p class="rationale">This branch tracks the more polished, upgrade-oriented stay logic.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-13</div><div class="item-title">TAOYA Atami positions itself as a scenic all-inclusive ocean-view onsen play</div><p class="item-body">The proposition is a full mood package: baths, lounge, food, and coast.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-19</div><div class="item-title">Shiroyama Kagoshima pushes the beer-plus-view-plus-bath adult-resort formula</div><p class="item-body">The line broadens into a more general premium-stay atmosphere.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-20</div><div class="item-title">Shirakaba lakeside resort coverage extends the seasonal premium-stay logic</div><p class="item-body">The branch widens from classic onsen into experience-rich resort planning without losing taste specificity.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+        <article class="branch">
+          <h3>T6-B2. Food Rankings and Seasonal Event Heat</h3>
+          <div class="meta">creator_or_event_line</div>
+          <p class="rationale">This branch keeps the line anchored in the actual reasons people choose one trip over another.</p>
+          <div class="timeline">
+            <div class="item topic_top"><div class="date">2026-05-18</div><div class="item-title">Hakone and East Izu firefly coverage adds a short-window seasonal reason to go</div><p class="item-body">The travel logic here is timing and atmosphere, not only convenience.</p><span class="chip">topic_top</span></div>
+            <div class="item topic_top"><div class="date">2026-05-20</div><div class="item-title">Food-ranked Hyogo inns put meal memory and bath quality on the same stage</div><p class="item-body">This is the kind of curation that makes onsen content feel genuinely useful.</p><span class="chip">topic_top</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="appendix">
+      <h2>Interest Watch</h2>
+      <p class="summary">This material stays visible because it clearly fits the user's interest world, even though it does not need a full trunk in this run.</p>
+      <div class="watch">
+        <h3>Camera and lens line</h3>
+        <div class="timeline">
+          <div class="item topic_top"><div class="date">2026-05-15</div><div class="item-title">Brightin Star refreshes its 10mm f/5.6 II ultra-wide</div><p class="item-body">A low-cost lens update keeps the playful budget-gear end of the conversation alive.</p><span class="chip">topic_top</span></div>
+          <div class="item topic_top"><div class="date">2026-05-18</div><div class="item-title">Thypoch moves into autofocus zoom territory with the Voyager 24-50mm f/2.8</div><p class="item-body">This gives the week a more serious product-evolution node, not only rumor chatter.</p><span class="chip">topic_top</span></div>
+          <div class="item topic_top"><div class="date">2026-05-19</div><div class="item-title">Sigma shows an 85mm f/1.2 prototype at China P&E</div><p class="item-body">The line has enough high-end lens heat to stay visible.</p><span class="chip">topic_top</span></div>
+          <div class="item topic_top"><div class="date">2026-05-20</div><div class="item-title">Older Nikon pro zooms get re-evaluated on modern mirrorless bodies</div><p class="item-body">The appeal here is classic gear still proving useful inside a newer-body workflow.</p><span class="chip">topic_top</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,7 +1,75 @@
+<p align="center">
+  <img src="assets/logo.jpg" alt="Syft logo" width="280" />
+</p>
+
 # syft-cli-skills
 
-`syft-cli-skills` is a public skill pack for Syft CLI based news workflows.
-It packages one orchestration skill plus five atomic skills for Codex and GitHub Copilot users who want to work directly from `syft following`, `syft top`, and `syft search` without depending on the local Python MVP pipeline.
+Turn raw Syft CLI signals into reusable editorial outputs: profile summaries, personalized briefings, storyline trees, backfill runs, and durable guidance.
+
+This repository packages one orchestration skill plus five atomic skills for people who want to work from:
+
+- `syft following`
+- `syft top`
+- `syft search`
+
+without depending on a local Python pipeline.
+
+## What Is This
+
+`syft-cli-skills` is a public skill pack for Codex and GitHub Copilot users who want a better workflow on top of Syft's AI-powered news system.
+
+Instead of treating news as a flat stream of links, these skills help an agent:
+
+- understand what the user actually follows
+- generate a reusable profile from that follow graph
+- write a daily edition that reflects both major events and personal interests
+- organize stories into trunk-branch storyline trees
+- backfill thin branches without rebuilding the whole editorial structure
+- persist long-term preferences so future runs stay aligned
+
+## Why Syft + Skills
+
+Syft AI gives you an AI-powered news environment centered on followed topics, source-aware story pools, and a more personalized way to browse what matters. The attached product view below shows the kind of topic-centric feed the system is built around.
+
+![Syft AI app overview](assets/app.jpg)
+
+The CLI gives you direct access to the core surfaces behind that experience:
+
+- `syft following` exposes the user's declared topic graph
+- `syft top` exposes high-signal story pools
+- `syft search` repairs gaps and deepens chronology
+
+The skill layer is what turns those primitives into agent-ready editorial workflows with consistent outputs.
+
+## What You Get
+
+| Skill | What it does | User value |
+| --- | --- | --- |
+| `syft-news-pipeline` | Routes a request to the correct Syft-only workflow | One entry point when the user does not want to think about internal steps |
+| `syft-profile-summary` | Converts `syft following` into reusable profile artifacts | Stops the user from re-explaining interests every session |
+| `syft-daily-briefing` | Builds a profile-aware daily edition | Turns a noisy pool into a readable personalized briefing |
+| `syft-storyline-tree` | Builds trunk-branch storyline outputs | Makes causal structure and interest-side branches easier to browse |
+| `syft-storyline-backfill` | Extends existing trunks or branches | Deepens thin lines without destroying the current tree |
+| `syft-guidance-rulebook` | Stores durable preferences and editorial rules | Makes future runs more stable and more personal |
+
+## Example Outputs
+
+These skills are designed to produce artifacts, not just transient chat answers.
+
+Typical outputs include:
+
+- `profiles/following_topics.md`
+- `profiles/profile_summary.md`
+- `briefings/daily_briefing_<date>.md`
+- `storylines/storyline_tree_<date>.md`
+- `storylines/storyline_tree_<date>.html`
+- `storylines/storyline_tree_<date>.json`
+
+You can inspect a full storyline tree example here:
+
+- [examples/artifacts/storyline_tree_2026-05-20.html](examples/artifacts/storyline_tree_2026-05-20.html)
+
+That example shows the kind of editorial deliverable the tree workflow aims to produce: a readable, card-based storyline page with trunks, branches, merged timelines, and visually separated evidence lanes.
 
 ## Included Skills
 
@@ -36,26 +104,24 @@ This repository is for:
 - GitHub Copilot users who want repository-local or personal agent skills for the same Syft-only news workflow
 - maintainers who want a reproducible skill bundle with examples, mirrored install layouts, and release assets
 
-## Repository Layout
+## Quick Start
 
-- `source-skills/`: canonical source skill folders maintained in this repository
-- `.github/skills/`: GitHub Copilot project-skill mirror generated from `source-skills/`
-- `codex-skills/`: Codex-oriented mirror generated from `source-skills/`
-- `docs/`: installation, release, and repository guidance
-- `examples/`: prompt and output-shape examples
-- `scripts/`: build, validate, and release helpers
+### 1. Install Syft CLI
 
-Edit `source-skills/`, then rebuild the mirrored skill roots with `scripts/build_skill_bundle.py`.
-Do not hand-edit `.github/skills/` or `codex-skills/` unless you are fixing the build itself.
+Install the official npm package:
 
-## Prerequisites
+```bash
+npm install -g @orionarm/syft-cli
+```
 
-- `syft` is installed and available on the target machine
-- `syft status` succeeds
-- the user can access `syft following`, `syft top`, and `syft search`
-- the user understands that final outputs are designed for Simplified Chinese by default unless they ask otherwise
+Then sign in and verify access:
 
-## Install For Codex
+```bash
+syft login
+syft status
+```
+
+### 2. Install Skills For Codex
 
 Two supported paths:
 
@@ -74,6 +140,12 @@ Two supported paths:
 
 See [docs/install-codex.md](docs/install-codex.md).
 
+### 3. First Useful Prompt
+
+```text
+Use $syft-news-pipeline to build my profile from Syft CLI only and produce today's personalized briefing.
+```
+
 ## Install For GitHub Copilot
 
 Two supported paths:
@@ -83,18 +155,39 @@ Two supported paths:
 
 See [docs/install-github-copilot.md](docs/install-github-copilot.md).
 
-## Usage Examples
+## Learn More
 
-Examples live in:
+The repository includes a pushable `wiki/` directory with longer-form explanations:
 
-- [examples/prompt-examples.md](examples/prompt-examples.md)
-- [examples/output-shapes.md](examples/output-shapes.md)
+- [wiki/Home.md](wiki/Home.md)
+- [wiki/What-Is-Syft-AI.md](wiki/What-Is-Syft-AI.md)
+- [wiki/Why-Use-Syft-CLI.md](wiki/Why-Use-Syft-CLI.md)
+- [wiki/Why-Use-Syft-Skills.md](wiki/Why-Use-Syft-Skills.md)
+- [wiki/Install-and-Setup.md](wiki/Install-and-Setup.md)
+- [wiki/Workflow-Examples.md](wiki/Workflow-Examples.md)
+- [wiki/Output-Examples.md](wiki/Output-Examples.md)
+- [wiki/FAQ.md](wiki/FAQ.md)
 
-Typical prompts:
+## Repository Layout
 
-- `Use $syft-news-pipeline to build my profile and today's briefing from Syft CLI only.`
-- `Use $syft-storyline-tree to turn today's briefing into a trunk-branch storyline tree.`
-- `Use $syft-storyline-backfill to deepen the EVA branch without rebuilding the whole tree.`
+- `assets/`: visual assets used in README and docs
+- `source-skills/`: canonical source skill folders maintained in this repository
+- `.github/skills/`: GitHub Copilot project-skill mirror generated from `source-skills/`
+- `codex-skills/`: Codex-oriented mirror generated from `source-skills/`
+- `docs/`: installation, release, and repository guidance
+- `wiki/`: longer-form explanatory content stored in-repo
+- `examples/`: prompt, output-shape, and artifact examples
+- `scripts/`: build, validate, and release helpers
+
+Edit `source-skills/`, then rebuild the mirrored skill roots with `scripts/build_skill_bundle.py`.
+Do not hand-edit `.github/skills/` or `codex-skills/` unless you are fixing the build itself.
+
+## Prerequisites
+
+- `syft` is installed and available on the target machine
+- `syft status` succeeds
+- the user can access `syft following`, `syft top`, and `syft search`
+- the user understands that final outputs are designed for Simplified Chinese by default unless they ask otherwise
 
 ## Build And Release
 
