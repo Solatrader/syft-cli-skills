@@ -112,13 +112,13 @@ This repository is for:
 
 ### 1. Install Syft CLI
 
-Get it from: https://github.com/orion-arm-ai/syft-news-cli
-
-Or, install the official npm package:
+Install the official npm package:
 
 ```bash
 npm install -g @orionarm/syft-cli
 ```
+
+(Or, get it from: https://github.com/orion-arm-ai/syft-news-cli)
 
 Then sign in and verify access:
 
